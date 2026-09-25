@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | SwiftSchool</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f7f9fc;
+        }
+
+        header {
+            background: #0b3d91;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            min-height: 400px;
+            background:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+        }
+
+        .section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #0b3d91;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        .programmes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .programme-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .programme-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .programme-card h3 {
+            color: #0b3d91;
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .programme-card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .programme-card ul {
+            padding-left: 20px;
+        }
+
+        .programme-card li {
+            margin-bottom: 8px;
+        }
+
+        .subjects {
+            background: white;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .subject {
+            background: #eef4ff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #0b3d91;
+        }
+
+        .approach {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .approach img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .approach-text h2 {
+            color: #0b3d91;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .approach-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .approach-text ul {
+            padding-left: 20px;
+        }
+
+        .approach-text li {
+            margin-bottom: 10px;
+        }
+
+        .cta {
+            background: #0b3d91;
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #0b3d91;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #eee;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .programmes {
+                grid-template-columns: 1fr;
+            }
+
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approach {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SwiftSchool</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="academics.html">Academics</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="staff.html">Staff</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Our Academics</h1>
+        <p>Building knowledge, confidence, creativity and character.</p>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Academic Programmes</h2>
+        <p>Our programmes are designed to support learners at every stage of their development.</p>
+    </div>
+
+    <div class="programmes">
+
+        <div class="programme-card">
+            <h3>Early Years</h3>
+            <p>
+                Our Early Years programme provides a caring and stimulating
+                environment where young learners develop essential foundations.
+            </p>
+
+            <ul>
+                <li>Early literacy</li>
+                <li>Numeracy</li>
+                <li>Creative activities</li>
+                <li>Social development</li>
+                <li>Physical development</li>
+            </ul>
+        </div>
+
+        <div class="programme-card">
+            <h3>Primary School</h3>
+            <p>
+                Our primary programme combines strong academic foundations
+                with practical learning and character development.
+            </p>
+
+            <ul>
+                <li>English Language</li>
+                <li>Mathematics</li>
+                <li>Science</li>
+                <li>Computing</li>
+                <li>Creative Arts</li>
+            </ul>
+        </div>
+
+        <div class="programme-card">
+            <h3>Junior High School</h3>
+            <p>
+                Learners are prepared for academic progression while developing
+                independent thinking, leadership and problem-solving skills.
+            </p>
+
+            <ul>
+                <li>Core subjects</li>
+                <li>ICT and Computing</li>
+                <li>Science</li>
+                <li>Social Studies</li>
+                <li>Career preparation</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section class="section subjects">
+
+    <div class="section-title">
+        <h2>Key Subjects</h2>
+        <p>Selected areas of learning within our academic programme.</p>
+    </div>
+
+    <div class="subject-grid">
+
+        <div class="subject">English Language</div>
+
+        <div class="subject">Mathematics</div>
+
+        <div class="subject">Science</div>
+
+        <div class="subject">Computing</div>
+
+        <div class="subject">Social Studies</div>
+
+        <div class="subject">Creative Arts</div>
+
+        <div class="subject">Physical Education</div>
+
+        <div class="subject">Reading</div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="approach">
+
+        <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80"
+            alt="Students learning in a classroom"
+        >
+
+        <div class="approach-text">
+
+            <h2>Our Approach to Learning</h2>
+
+            <p>
+                At SwiftSchool, we believe effective education goes beyond
+                memorising information. We encourage learners to ask questions,
+                explore ideas and apply their knowledge.
+            </p>
+
+            <p>
+                Our teachers use a combination of classroom instruction,
+                practical activities, technology and collaborative learning.
+            </p>
+
+            <ul>
+                <li>Student-centred learning</li>
+                <li>Practical and interactive lessons</li>
+                <li>Technology-supported learning</li>
+                <li>Continuous assessment</li>
+                <li>Character and leadership development</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <h2>Give Your Child the Right Foundation</h2>
+
+    <p>
+        Discover an environment where students can learn, grow and achieve.
+    </p>
+
+    <a href="admissions.html" class="btn">Explore Admissions</a>
+
+</section>
+
+<footer>
+
+    <p>&copy; 2026 SwiftSchool. All Rights Reserved.</p>
+
+</footer>
+
+</body>
+</html>
