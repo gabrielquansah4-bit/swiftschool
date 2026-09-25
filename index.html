@@ -6,7 +6,8 @@
 
     <title>SwiftSchool | Excellence in Education</title>
 
-    <meta name="description" content="SwiftSchool - providing quality education and developing confident, responsible and successful students.">
+    <meta name="description"
+          content="SwiftSchool provides quality education in a caring and inspiring environment.">
 
     <style>
         * {
@@ -15,65 +16,111 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #222;
-            background: #ffffff;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            line-height: 1.6;
+            background: white;
+        }
+
+        /* HEADER */
+
         header {
-            background: #123b63;
-            color: white;
-            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 15px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #123b63;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #123b63;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
         }
 
         nav a {
-            color: white;
+            color: #222;
             text-decoration: none;
             margin-left: 25px;
             font-size: 15px;
+            font-weight: 500;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #123b63;
         }
 
+        .nav-button {
+            background: #f5b400;
+            padding: 10px 18px;
+            border-radius: 5px;
+        }
+
+        /* HERO */
+
         .hero {
-            min-height: 500px;
-            padding: 80px 7%;
+            min-height: 600px;
             display: flex;
             align-items: center;
-            background: linear-gradient(
-                rgba(18, 59, 99, 0.85),
-                rgba(18, 59, 99, 0.85)
-            ),
-            url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80");
+            padding: 80px 7%;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(10, 43, 74, 0.78),
+                    rgba(10, 43, 74, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=85");
 
             background-size: cover;
             background-position: center;
-            color: white;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 720px;
+        }
+
+        .hero small {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 54px;
+            line-height: 1.15;
+            margin-bottom: 22px;
         }
 
         .hero p {
             font-size: 19px;
+            max-width: 650px;
             margin-bottom: 30px;
         }
 
@@ -81,31 +128,43 @@
             display: inline-block;
             background: #f5b400;
             color: #111;
-            padding: 13px 25px;
+            padding: 13px 24px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             margin-right: 10px;
         }
 
-        .button.secondary {
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .button-white {
             background: white;
         }
 
+        /* GENERAL */
+
         section {
-            padding: 70px 7%;
+            padding: 80px 7%;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .section-title h2 {
             color: #123b63;
-            font-size: 32px;
+            font-size: 34px;
             margin-bottom: 10px;
         }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* WHY US */
 
         .cards {
             display: grid;
@@ -114,10 +173,15 @@
         }
 
         .card {
-            padding: 30px;
+            padding: 35px 25px;
             background: #f5f7fa;
             border-radius: 10px;
             text-align: center;
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
         }
 
         .card h3 {
@@ -125,33 +189,166 @@
             margin-bottom: 12px;
         }
 
+        .card p {
+            color: #555;
+        }
+
+        /* ABOUT */
+
         .about {
             background: #f5f7fa;
         }
 
-        .about-content {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
 
-        .cta {
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .about-text h2 {
+            color: #123b63;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* PROGRAMMES */
+
+        .programme-card {
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .programme-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .programme-content {
+            padding: 25px;
+        }
+
+        .programme-content h3 {
+            color: #123b63;
+            margin-bottom: 10px;
+        }
+
+        /* PRINCIPAL */
+
+        .principal {
             background: #123b63;
             color: white;
-            text-align: center;
         }
 
-        .cta h2 {
+        .principal-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .principal img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .principal h2 {
             font-size: 32px;
             margin-bottom: 15px;
         }
 
-        footer {
+        .principal p {
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* ADMISSIONS */
+
+        .admissions {
+            background: #f5f7fa;
+            text-align: center;
+        }
+
+        .admissions h2 {
+            color: #123b63;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .admissions p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: #555;
+        }
+
+        /* CONTACT */
+
+        .contact {
             background: #0c2945;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #071d31;
             color: white;
             text-align: center;
             padding: 25px;
+            font-size: 14px;
         }
+
+        /* MOBILE */
 
         @media (max-width: 768px) {
 
@@ -160,21 +357,45 @@
                 gap: 15px;
             }
 
+            nav {
+                text-align: center;
+            }
+
             nav a {
-                margin: 0 7px;
+                display: inline-block;
+                margin: 5px 7px;
                 font-size: 13px;
             }
 
-            .hero h1 {
-                font-size: 36px;
+            .hero {
+                min-height: 550px;
             }
 
-            .cards {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .cards,
+            .gallery,
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                min-height: 450px;
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .principal-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .principal img {
+                margin: auto;
             }
         }
     </style>
@@ -182,9 +403,12 @@
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
     <div class="logo">
+        <div class="logo-icon">S</div>
         SwiftSchool
     </div>
 
@@ -192,33 +416,36 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#academics">Academics</a>
+        <a href="#gallery">Gallery</a>
         <a href="#admissions">Admissions</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" class="nav-button">Contact</a>
     </nav>
 
 </header>
 
 
-<main>
+<!-- HERO -->
 
 <section class="hero" id="home">
 
     <div class="hero-content">
 
+        <small>Welcome to SwiftSchool</small>
+
         <h1>Building Bright Futures Through Education</h1>
 
         <p>
-            Welcome to SwiftSchool, where we provide quality education,
-            nurture talents and help students develop the knowledge,
-            confidence and character they need for the future.
+            We provide quality education in a safe, caring and inspiring
+            environment where every child is encouraged to learn, grow
+            and achieve their full potential.
         </p>
 
         <a href="#admissions" class="button">
             Apply for Admission
         </a>
 
-        <a href="#contact" class="button secondary">
-            Contact Us
+        <a href="#about" class="button button-white">
+            Discover Our School
         </a>
 
     </div>
@@ -226,42 +453,16 @@
 </section>
 
 
-<section id="about">
+<!-- WHY CHOOSE US -->
 
-    <div class="section-title">
-        <h2>About Our School</h2>
-        <p>Education, character and excellence.</p>
-    </div>
-
-    <div class="about-content">
-
-        <p>
-            SwiftSchool is committed to providing a supportive and
-            engaging learning environment where every student has
-            the opportunity to grow academically and personally.
-        </p>
-
-        <br>
-
-        <p>
-            Our dedicated teachers work together with parents and
-            the wider community to help students achieve their full
-            potential.
-        </p>
-
-    </div>
-
-</section>
-
-
-<section class="about" id="academics">
+<section>
 
     <div class="section-title">
 
-        <h2>Our Academics</h2>
+        <h2>Why Choose SwiftSchool?</h2>
 
         <p>
-            A strong foundation for lifelong learning.
+            Creating an environment where students can thrive.
         </p>
 
     </div>
@@ -271,11 +472,13 @@
 
         <div class="card">
 
-            <h3>Early Years</h3>
+            <div class="card-icon">📚</div>
+
+            <h3>Quality Education</h3>
 
             <p>
-                Building strong foundations through engaging,
-                practical and age-appropriate learning.
+                We provide engaging learning experiences that help
+                students build strong academic foundations.
             </p>
 
         </div>
@@ -283,11 +486,13 @@
 
         <div class="card">
 
-            <h3>Primary Education</h3>
+            <div class="card-icon">👩‍🏫</div>
+
+            <h3>Dedicated Teachers</h3>
 
             <p>
-                Developing literacy, numeracy, creativity,
-                confidence and critical thinking.
+                Our teachers are committed to supporting every
+                student's academic and personal development.
             </p>
 
         </div>
@@ -295,11 +500,13 @@
 
         <div class="card">
 
-            <h3>Secondary Education</h3>
+            <div class="card-icon">🌟</div>
+
+            <h3>Character Development</h3>
 
             <p>
-                Preparing students for higher education,
-                careers and responsible citizenship.
+                We encourage discipline, confidence, responsibility,
+                creativity and respect.
             </p>
 
         </div>
@@ -309,75 +516,307 @@
 </section>
 
 
-<section id="admissions">
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-grid">
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=85"
+                alt="Students learning at school"
+            >
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>About Our School</h2>
+
+            <p>
+                SwiftSchool is committed to providing a supportive,
+                inclusive and engaging learning environment.
+            </p>
+
+            <p>
+                We believe education goes beyond the classroom.
+                Our goal is to help students develop academically,
+                socially and personally.
+            </p>
+
+            <p>
+                Through collaboration between teachers, parents and
+                the wider community, we help our students prepare
+                for a successful future.
+            </p>
+
+            <a href="#contact" class="button">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ACADEMICS -->
+
+<section id="academics">
 
     <div class="section-title">
 
-        <h2>Admissions</h2>
+        <h2>Our Academic Programmes</h2>
 
         <p>
-            Give your child the opportunity to learn, grow and succeed.
+            Strong foundations for lifelong learning.
         </p>
 
     </div>
 
 
-    <div class="about-content">
+    <div class="cards">
 
-        <p>
-            Applications are open for prospective students.
-            Contact our admissions office to learn about available
-            classes, requirements, fees and admission procedures.
-        </p>
+        <div class="programme-card">
 
-        <br>
+            <img
+                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85"
+                alt="Early years students"
+            >
 
-        <a href="#contact" class="button">
-            Contact Admissions
-        </a>
+            <div class="programme-content">
+
+                <h3>Early Years</h3>
+
+                <p>
+                    Developing curiosity, communication, creativity
+                    and foundational skills through engaging activities.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="programme-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85"
+                alt="Primary school students"
+            >
+
+            <div class="programme-content">
+
+                <h3>Primary Education</h3>
+
+                <p>
+                    Building strong foundations in literacy, numeracy,
+                    science, creativity and critical thinking.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="programme-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=85"
+                alt="Secondary students"
+            >
+
+            <div class="programme-content">
+
+                <h3>Secondary Education</h3>
+
+                <p>
+                    Preparing students for higher education, careers
+                    and responsible citizenship.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<section class="cta" id="contact">
+<!-- PRINCIPAL -->
 
-    <h2>Get In Touch</h2>
+<section class="principal">
+
+    <div class="principal-grid">
+
+        <img
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85"
+            alt="School principal"
+        >
+
+        <div>
+
+            <h2>Message from the Head of School</h2>
+
+            <p>
+                Welcome to SwiftSchool.
+            </p>
+
+            <p>
+                Our commitment is to create an environment where every
+                child feels valued, supported and inspired to achieve.
+            </p>
+
+            <p>
+                We look forward to working together with parents and
+                our community to build a brighter future for our students.
+            </p>
+
+            <strong>
+                — Head of School
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <div class="section-title">
+
+        <h2>School Life</h2>
+
+        <p>
+            A glimpse into our learning community.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img
+            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85"
+            alt="Students in classroom"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85"
+            alt="Students together"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=900&q=85"
+            alt="Students learning"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=85"
+            alt="Teacher with students"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=85"
+            alt="Classroom"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=900&q=85"
+            alt="Students studying"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- ADMISSIONS -->
+
+<section class="admissions" id="admissions">
+
+    <h2>Admissions Are Open</h2>
 
     <p>
-        We would be happy to answer your questions.
+        Give your child the opportunity to learn, grow and succeed.
+        Contact our admissions office to learn about available classes,
+        requirements, fees and admission procedures.
     </p>
 
-    <br>
-
-    <p>
-        📞 +233 XX XXX XXXX
-    </p>
-
-    <p>
-        ✉️ info@swiftschool.com
-    </p>
-
-    <p>
-        📍 Accra, Ghana
-    </p>
-
-    <br>
-
-    <a href="mailto:info@swiftschool.com" class="button">
-        Email the School
+    <a href="#contact" class="button">
+        Contact Admissions
     </a>
 
 </section>
 
-</main>
 
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <h2 style="color:white;">Get In Touch</h2>
+
+        <p style="color:white;">
+            We would be happy to answer your questions.
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+        <div class="contact-box">
+
+            <h3>📞 Phone</h3>
+
+            <p>+233 XX XXX XXXX</p>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <h3>✉️ Email</h3>
+
+            <p>info@swiftschool.com</p>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <h3>📍 Location</h3>
+
+            <p>Accra, Ghana</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
     <p>
         © 2026 SwiftSchool. All Rights Reserved.
+    </p>
+
+    <p>
+        Designed by SwiftWeb
     </p>
 
 </footer>
