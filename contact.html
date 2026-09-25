@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events | SwiftSchool</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0b3d91;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
+
+        .hero {
+            height: 380px;
+            background:
+                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+                url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .section {
+            padding: 70px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            color: #0b3d91;
+            font-size: 34px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .date {
+            color: #0b3d91;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .news-content h3 {
+            margin: 10px 0;
+            color: #222;
+        }
+
+        .news-content p {
+            color: #666;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width:900px) {
+            .news-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media(max-width:550px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SwiftSchool</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="academics.html">Academics</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="staff.html">Staff</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>News & Events</h1>
+        <p>Stay updated with what's happening at SwiftSchool.</p>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="title">
+        <h2>Latest News & Events</h2>
+    </div>
+
+    <div class="news-grid">
+
+        <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80" alt="School event">
+
+            <div class="news-content">
+                <span class="date">September 2026</span>
+                <h3>New Academic Year Begins</h3>
+                <p>
+                    SwiftSchool welcomes students and families to another exciting
+                    academic year.
+                </p>
+            </div>
+        </article>
+
+        <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80" alt="Teacher">
+
+            <div class="news-content">
+                <span class="date">October 2026</span>
+                <h3>Parent-Teacher Meeting</h3>
+                <p>
+                    Parents and teachers come together to discuss student progress
+                    and development.
+                </p>
+            </div>
+        </article>
+
+        <article class="news-card">
+            <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1000&q=80" alt="Students">
+
+            <div class="news-content">
+                <span class="date">November 2026</span>
+                <h3>Inter-School Activities</h3>
+                <p>
+                    Students participate in educational, sporting and creative
+                    activities.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 SwiftSchool. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
