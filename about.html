@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | SwiftSchool</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: #123b63;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #123b63;
+        }
+
+        .hero {
+            background:
+                linear-gradient(
+                    rgba(10,43,74,0.78),
+                    rgba(10,43,74,0.78)
+                ),
+                url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            padding: 120px 7%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #123b63;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: #555;
+        }
+
+        .values {
+            background: #f5f7fa;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            color: #123b63;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            background: #071d31;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: white;
+        }
+
+        @media(max-width:768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        SwiftSchool
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="academics.html">Academics</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="staff.html">Staff</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>About SwiftSchool</h1>
+
+    <p style="color:white;">
+        Inspiring students to learn, grow and achieve.
+    </p>
+
+</section>
+
+
+<section>
+
+    <div class="content">
+
+        <h2>Who We Are</h2>
+
+        <p>
+            SwiftSchool is committed to providing quality education
+            in a supportive and engaging environment.
+        </p>
+
+        <p>
+            We believe that every child has unique abilities and
+            potential. Our responsibility is to provide the guidance,
+            knowledge and opportunities students need to develop those
+            abilities.
+        </p>
+
+        <p>
+            Our school community brings together students, teachers,
+            parents and administrators with a shared commitment to
+            learning and personal development.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="values">
+
+    <div class="content">
+
+        <h2 style="text-align:center;">
+            Our Core Values
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Excellence</h3>
+
+                <p>
+                    We encourage students and staff to strive for
+                    high standards in everything they do.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Integrity</h3>
+
+                <p>
+                    We promote honesty, responsibility, respect
+                    and strong moral character.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Innovation</h3>
+
+                <p>
+                    We encourage curiosity, creativity and
+                    independent thinking.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="content">
+
+        <h2>Our Vision</h2>
+
+        <p>
+            To develop confident, responsible and knowledgeable
+            young people who are prepared to contribute positively
+            to society.
+        </p>
+
+        <h2>Our Mission</h2>
+
+        <p>
+            To provide accessible, engaging and quality education
+            while supporting the academic, social and personal
+            development of every student.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 SwiftSchool. All Rights Reserved.
+    </p>
+
+    <p>
+        Designed by SwiftWeb
+    </p>
+
+</footer>
+
+</body>
+</html>
