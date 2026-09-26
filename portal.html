@@ -1,213 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+document.addEventListener("DOMContentLoaded", function () {
+
+    let students = JSON.parse(localStorage.getItem("swiftSchoolStudents")) || [];
+
+    const studentForm = document.getElementById("studentForm");
+    const studentTableBody = document.getElementById("studentTableBody");
+    const studentSearch = document.getElementById("studentSearch");
 
-    <title>School Portal | SwiftSchool</title>
+    const totalStudents = document.getElementById("totalStudents");
+    const totalClasses = document.getElementById("totalClasses");
+
+    function saveStudents() {
+        localStorage.setItem(
+            "swiftSchoolStudents",
+            JSON.stringify(students)
+        );
+    }
+
+    function renderStudents() {
 
-    <link rel="stylesheet" href="style.css">
-</head>
+        if (!studentTableBody) return;
 
-<body class="portal-body">
+        studentTableBody.innerHTML = "";
 
-<header class="portal-header">
+        if (students.length === 0) {
+            studentTableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" style="text-align:center;">
+                        No students registered yet.
+                    </td>
+                </tr>
+            `;
+        } else {
+
+            students.forEach((student, index) => {
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${student.name}</td>
+                    <td>${student.admission}</td>
+                    <td>${student.className}</td>
+                    <td>${student.gender}</td>
+                    <td>
+                        <button onclick="editStudent(${index})"
+                            style="margin:0 5px 0 0;">
+                            Edit
+                        </button>
 
-    <div class="logo">
-        Swift<span>School</span> Portal
-    </div>
+                        <button onclick="deleteStudent(${index})"
+                            style="margin:0;">
+                            Delete
+                        </button>
+                    </td>
+                `;
 
-    <a href="index.html" class="btn btn-light">
-        School Website
-    </a>
+                studentTableBody.appendChild(row);
+            });
+        }
 
-</header>
+        updateStats();
+    }
 
-<div class="portal-layout">
+    function updateStats() {
 
-    <aside class="portal-sidebar">
+        if (totalStudents) {
+            totalStudents.textContent = students.length;
+        }
 
-        <h3>Portal Menu</h3>
+        if (totalClasses) {
 
-        <a href="portal.html" class="active">Dashboard</a>
-        <a href="#students">Students</a>
-        <a href="#teachers">Teachers</a>
-        <a href="#classes">Classes</a>
-        <a href="#subjects">Subjects</a>
-        <a href="#assessments">Assessments</a>
-        <a href="#reports">Report Cards</a>
-        <a href="#settings">Settings</a>
+            const classes = [
+                ...new Set(
+                    students
+                        .map(student => student.className)
+                        .filter(Boolean)
+                )
+            ];
 
-    </aside>
+            totalClasses.textContent = classes.length;
+        }
+    }
 
-    <main class="portal-main">
+    function addStudent(event) {
 
-        <div class="portal-welcome">
+        event.preventDefault();
 
-            <h1>Administrator Dashboard</h1>
+        const name = document.getElementById("studentName").value.trim();
+        const admission = document.getElementById("admissionNumber").value.trim();
+        const className = document.getElementById("studentClass").value.trim();
+        const gender = document.getElementById("studentGender").value;
 
-            <p>
-                Manage students, teachers, classes, assessments and academic reports.
-            </p>
+        if (!name || !admission || !className || !gender) {
+            alert("Please complete all required student fields.");
+            return;
+        }
 
-        </div>
+        const existingStudent = students.find(
+            student =>
+                student.admission.toLowerCase() === admission.toLowerCase()
+        );
 
-        <div class="stats">
+        const editingIndex = document.getElementById("editingIndex").value;
 
-            <div class="stat-card">
-                <h4>Total Students</h4>
-                <strong>0</strong>
-            </div>
+        if (editingIndex !== "") {
 
-            <div class="stat-card">
-                <h4>Total Teachers</h4>
-                <strong>0</strong>
-            </div>
+            students[Number(editingIndex)] = {
+                name,
+                admission,
+                className,
+                gender
+            };
 
-            <div class="stat-card">
-                <h4>Total Classes</h4>
-                <strong>0</strong>
-            </div>
+            document.getElementById("editingIndex").value = "";
 
-            <div class="stat-card">
-                <h4>Assessments</h4>
-                <strong>0</strong>
-            </div>
+            studentForm.querySelector("button[type='submit']").textContent =
+                "Add Student";
 
-        </div>
+        } else {
 
-        <section class="portal-section">
+            if (existingStudent) {
+                alert("A student with this admission number already exists.");
+                return;
+            }
 
-            <h2>Quick Actions</h2>
+            students.push({
+                name,
+                admission,
+                className,
+                gender
+            });
+        }
 
-            <div class="portal-actions">
+        saveStudents();
+        renderStudents();
 
-                <a href="#students" class="portal-action">
-                    <h3>Add Student</h3>
-                    <p>Register and manage student information.</p>
-                </a>
+        studentForm.reset();
 
-                <a href="#teachers" class="portal-action">
-                    <h3>Add Teacher</h3>
-                    <p>Create and manage teacher records.</p>
-                </a>
+        alert("Student record saved successfully.");
+    }
 
-                <a href="#assessments" class="portal-action">
-                    <h3>Enter Marks</h3>
-                    <p>Enter student marks for subjects and assessments.</p>
-                </a>
+    window.editStudent = function (index) {
 
-                <a href="#reports" class="portal-action">
-                    <h3>Generate Reports</h3>
-                    <p>Prepare student report cards and results.</p>
-                </a>
+        const student = students[index];
 
-            </div>
+        document.getElementById("studentName").value = student.name;
+        document.getElementById("admissionNumber").value = student.admission;
+        document.getElementById("studentClass").value = student.className;
+        document.getElementById("studentGender").value = student.gender;
 
-        </section>
+        document.getElementById("editingIndex").value = index;
 
-        <section class="portal-section" id="students">
+        studentForm.querySelector("button[type='submit']").textContent =
+            "Update Student";
 
-            <h2>Students</h2>
+        document.getElementById("studentName").focus();
+    };
 
-            <p>
-                Student records will appear here once we build the student management system.
-            </p>
+    window.deleteStudent = function (index) {
 
-            <br>
+        const student = students[index];
 
-            <table>
+        const confirmed = confirm(
+            `Delete ${student.name} from the student records?`
+        );
 
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Student Name</th>
-                        <th>Admission No.</th>
-                        <th>Class</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
+        if (!confirmed) return;
 
-                <tbody>
-                    <tr>
-                        <td>—</td>
-                        <td>No students yet</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>Ready</td>
-                    </tr>
-                </tbody>
+        students.splice(index, 1);
 
-            </table>
+        saveStudents();
+        renderStudents();
+    };
 
-        </section>
+    function searchStudents() {
 
-        <section class="portal-section" id="teachers">
+        const searchText = studentSearch.value.toLowerCase().trim();
 
-            <h2>Teachers</h2>
+        const rows = studentTableBody.querySelectorAll("tr");
 
-            <p>
-                Teacher management will be added here.
-            </p>
+        rows.forEach(row => {
 
-        </section>
+            const text = row.textContent.toLowerCase();
 
-        <section class="portal-section" id="classes">
+            row.style.display =
+                text.includes(searchText) ? "" : "none";
+        });
+    }
 
-            <h2>Classes</h2>
+    if (studentForm) {
+        studentForm.addEventListener("submit", addStudent);
+    }
 
-            <p>
-                Classes and streams will be managed here.
-            </p>
+    if (studentSearch) {
+        studentSearch.addEventListener("input", searchStudents);
+    }
 
-        </section>
-
-        <section class="portal-section" id="subjects">
-
-            <h2>Subjects</h2>
-
-            <p>
-                School subjects will be managed here.
-            </p>
-
-        </section>
-
-        <section class="portal-section" id="assessments">
-
-            <h2>Assessments & Marks</h2>
-
-            <p>
-                This is where teachers will eventually enter student marks,
-                totals, averages, grades and remarks.
-            </p>
-
-        </section>
-
-        <section class="portal-section" id="reports">
-
-            <h2>Report Cards</h2>
-
-            <p>
-                Student report cards will be generated here automatically
-                once the assessment system is connected.
-            </p>
-
-        </section>
-
-        <section class="portal-section" id="settings">
-
-            <h2>Settings</h2>
-
-            <p>
-                School settings, academic terms and system configuration
-                will be managed here.
-            </p>
-
-        </section>
-
-    </main>
-
-</div>
-
-</body>
-</html>
+    renderStudents();
+});
