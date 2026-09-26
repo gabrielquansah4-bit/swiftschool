@@ -4,153 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Staff | SwiftSchool</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f9fc;
-            color: #333;
-        }
-
-        header {
-            background: #0b3d91;
-            color: white;
-            padding: 15px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 18px;
-            font-weight: bold;
-        }
-
-        .hero {
-            height: 380px;
-            background:
-                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-                url("https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1600&q=80")
-                center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-        }
-
-        .section {
-            padding: 70px 8%;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .title h2 {
-            color: #0b3d91;
-            font-size: 34px;
-        }
-
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .staff-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-            text-align: center;
-        }
-
-        .staff-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .staff-card div {
-            padding: 22px;
-        }
-
-        .staff-card h3 {
-            color: #0b3d91;
-            margin-bottom: 8px;
-        }
-
-        .staff-card p {
-            color: #666;
-        }
-
-        .message {
-            background: white;
-            text-align: center;
-        }
-
-        .message p {
-            max-width: 800px;
-            margin: 15px auto;
-            color: #555;
-            font-size: 18px;
-        }
-
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        @media(max-width:900px) {
-            .staff-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-
-        @media(max-width:550px) {
-            .staff-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 35px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <div class="logo">SwiftSchool</div>
+    <div class="logo">Swift<span>School</span></div>
 
     <nav>
         <a href="index.html">Home</a>
@@ -161,88 +21,42 @@
         <a href="gallery.html">Gallery</a>
         <a href="news.html">News</a>
         <a href="contact.html">Contact</a>
+        <a href="portal.html">Portal</a>
     </nav>
 </header>
 
-<section class="hero">
-    <div>
-        <h1>Meet Our Staff</h1>
-        <p>Dedicated educators committed to student success.</p>
-    </div>
+<section class="page-hero">
+    <h1>Our Staff</h1>
 </section>
 
 <section class="section">
 
-    <div class="title">
-        <h2>Our Leadership & Teachers</h2>
+    <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>Dedicated professionals supporting every learner.</p>
     </div>
 
-    <div class="staff-grid">
+    <div class="grid">
 
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Principal">
-            <div>
-                <h3>Dr. Michael Mensah</h3>
-                <p>Principal / Head of School</p>
-            </div>
+        <div class="card staff-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="School Administrator">
+            <h3>School Administrator</h3>
+            <p>Administration & Student Services</p>
         </div>
 
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Teacher">
-            <div>
-                <h3>Mrs. Sarah Asante</h3>
-                <p>Head of Academics</p>
-            </div>
+        <div class="card staff-card">
+            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=500&q=80" alt="Academic Coordinator">
+            <h3>Academic Coordinator</h3>
+            <p>Academic Programmes</p>
         </div>
 
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Teacher">
-            <div>
-                <h3>Ms. Grace Owusu</h3>
-                <p>Primary Teacher</p>
-            </div>
-        </div>
-
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Teacher">
-            <div>
-                <h3>Mr. Daniel Boateng</h3>
-                <p>Science Teacher</p>
-            </div>
-        </div>
-
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Teacher">
-            <div>
-                <h3>Mrs. Linda Addo</h3>
-                <p>English Teacher</p>
-            </div>
-        </div>
-
-        <div class="staff-card">
-            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80" alt="Teacher">
-            <div>
-                <h3>Mr. Samuel Kofi</h3>
-                <p>ICT & Computing Teacher</p>
-            </div>
+        <div class="card staff-card">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=500&q=80" alt="Teacher">
+            <h3>Class Teacher</h3>
+            <p>Teaching & Learning</p>
         </div>
 
     </div>
-</section>
-
-<section class="section message">
-
-    <h2>Committed to Every Learner</h2>
-
-    <p>
-        Our teachers work together to create a supportive learning environment
-        where every learner has the opportunity to discover their strengths.
-    </p>
-
-    <p>
-        As the school grows, this page can be updated with real staff profiles,
-        photographs, qualifications and subjects taught.
-    </p>
 
 </section>
 
