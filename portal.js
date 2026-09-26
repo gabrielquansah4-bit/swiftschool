@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         studentTableBody.innerHTML = "";
 
         if (students.length === 0) {
+
             studentTableBody.innerHTML = `
                 <tr>
                     <td colspan="6" style="text-align:center;">
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </td>
                 </tr>
             `;
+
         } else {
 
             students.forEach((student, index) => {
@@ -38,18 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 row.innerHTML = `
                     <td>${index + 1}</td>
+
                     <td>${student.name}</td>
+
                     <td>${student.admission}</td>
+
                     <td>${student.className}</td>
+
                     <td>${student.gender}</td>
+
                     <td>
-                        <button onclick="editStudent(${index})"
-                            style="margin:0 5px 0 0;">
+                        <button
+                            type="button"
+                            onclick="editStudent(${index})"
+                            style="margin:0 5px 5px 0;"
+                        >
                             Edit
                         </button>
 
-                        <button onclick="deleteStudent(${index})"
-                            style="margin:0;">
+                        <button
+                            type="button"
+                            onclick="deleteStudent(${index})"
+                            style="margin:0;"
+                        >
                             Delete
                         </button>
                     </td>
@@ -86,12 +99,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        const name = document.getElementById("studentName").value.trim();
-        const admission = document.getElementById("admissionNumber").value.trim();
-        const className = document.getElementById("studentClass").value.trim();
-        const gender = document.getElementById("studentGender").value;
+        const name =
+            document.getElementById("studentName").value.trim();
+
+        const admission =
+            document.getElementById("admissionNumber").value.trim();
+
+        const className =
+            document.getElementById("studentClass").value.trim();
+
+        const gender =
+            document.getElementById("studentGender").value;
 
         if (!name || !admission || !className || !gender) {
+
             alert("Please complete all required student fields.");
             return;
         }
@@ -101,58 +122,77 @@ document.addEventListener("DOMContentLoaded", function () {
                 student.admission.toLowerCase() === admission.toLowerCase()
         );
 
-        const editingIndex = document.getElementById("editingIndex").value;
+        const editingIndex =
+            document.getElementById("editingIndex").value;
 
         if (editingIndex !== "") {
 
             students[Number(editingIndex)] = {
-                name,
-                admission,
-                className,
-                gender
+                name: name,
+                admission: admission,
+                className: className,
+                gender: gender
             };
 
             document.getElementById("editingIndex").value = "";
 
-            studentForm.querySelector("button[type='submit']").textContent =
-                "Add Student";
+            studentForm.querySelector(
+                "button[type='submit']"
+            ).textContent = "Add Student";
+
+            alert("Student record updated successfully.");
 
         } else {
 
             if (existingStudent) {
-                alert("A student with this admission number already exists.");
+
+                alert(
+                    "A student with this admission number already exists."
+                );
+
                 return;
             }
 
             students.push({
-                name,
-                admission,
-                className,
-                gender
+                name: name,
+                admission: admission,
+                className: className,
+                gender: gender
             });
+
+            alert("Student record added successfully.");
         }
 
         saveStudents();
         renderStudents();
 
         studentForm.reset();
-
-        alert("Student record saved successfully.");
     }
 
     window.editStudent = function (index) {
 
         const student = students[index];
 
-        document.getElementById("studentName").value = student.name;
-        document.getElementById("admissionNumber").value = student.admission;
-        document.getElementById("studentClass").value = student.className;
-        document.getElementById("studentGender").value = student.gender;
+        if (!student) return;
 
-        document.getElementById("editingIndex").value = index;
+        document.getElementById("studentName").value =
+            student.name;
 
-        studentForm.querySelector("button[type='submit']").textContent =
-            "Update Student";
+        document.getElementById("admissionNumber").value =
+            student.admission;
+
+        document.getElementById("studentClass").value =
+            student.className;
+
+        document.getElementById("studentGender").value =
+            student.gender;
+
+        document.getElementById("editingIndex").value =
+            index;
+
+        studentForm.querySelector(
+            "button[type='submit']"
+        ).textContent = "Update Student";
 
         document.getElementById("studentName").focus();
     };
@@ -160,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
     window.deleteStudent = function (index) {
 
         const student = students[index];
+
+        if (!student) return;
 
         const confirmed = confirm(
             `Delete ${student.name} from the student records?`
@@ -171,17 +213,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         saveStudents();
         renderStudents();
+
+        alert("Student record deleted.");
     };
 
     function searchStudents() {
 
-        const searchText = studentSearch.value.toLowerCase().trim();
+        if (!studentSearch || !studentTableBody) return;
 
-        const rows = studentTableBody.querySelectorAll("tr");
+        const searchText =
+            studentSearch.value.toLowerCase().trim();
+
+        const rows =
+            studentTableBody.querySelectorAll("tr");
 
         rows.forEach(row => {
 
-            const text = row.textContent.toLowerCase();
+            const text =
+                row.textContent.toLowerCase();
 
             row.style.display =
                 text.includes(searchText) ? "" : "none";
@@ -189,11 +238,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (studentForm) {
-        studentForm.addEventListener("submit", addStudent);
+        studentForm.addEventListener(
+            "submit",
+            addStudent
+        );
     }
 
     if (studentSearch) {
-        studentSearch.addEventListener("input", searchStudents);
+        studentSearch.addEventListener(
+            "input",
+            searchStudents
+        );
     }
 
     renderStudents();
